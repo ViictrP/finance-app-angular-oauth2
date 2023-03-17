@@ -11,6 +11,9 @@ const routes: Route[] = [
     path: '',
     component: AppComponent,
     canActivate: [AuthGuard],
+    data: {
+      roles: ['user']
+    },
     children: [{
       path: 'secure',
       loadChildren: () => import('./secure/secure.module').then(m => m.SecureModule)
