@@ -1,30 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
-import {OAuthModule} from "angular-oauth2-oidc";
-import {HomeComponent} from "./components/home.component";
-import {RouterModule} from "@angular/router";
+import {AppComponent} from './components/app.component';
+import {AuthModule} from "./auth/auth.module";
+import {AppRoutingModule} from "./app.routing.module";
+import {LayoutModule} from "./layout/layout.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot([{
-      path: 'home',
-      component: HomeComponent
-    }]),
-    OAuthModule.forRoot({
-      resourceServer: {
-        allowedUrls: ['http://localhost:8081'],
-        sendAccessToken: true
-      }
-    })
+    AuthModule,
+    AppRoutingModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
