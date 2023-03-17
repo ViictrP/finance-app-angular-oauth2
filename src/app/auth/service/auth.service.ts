@@ -21,6 +21,10 @@ export class AuthService {
     return this.keycloakService.isLoggedIn();
   }
 
+  public getToken() {
+    return this.keycloakService.getToken();
+  }
+
   public loadUserProfile() {
     return this.keycloakService.loadUserProfile();
   }
