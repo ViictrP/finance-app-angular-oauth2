@@ -3,6 +3,7 @@ import {AuthService} from "./service/auth.service";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializer} from "./keycloak-initializer";
 import {AuthGuard} from "./guards/auth.guard";
+import { NotPermittedComponent } from './components/not-permited/not-permitted.component';
 
 @NgModule({
   imports: [KeycloakAngularModule],
@@ -15,7 +16,11 @@ import {AuthGuard} from "./guards/auth.guard";
       multi: true,
       deps: [KeycloakService]
     }
-  ]
+  ],
+  declarations: [
+    NotPermittedComponent
+  ],
+  exports: [NotPermittedComponent]
 })
 export class AuthModule {
 

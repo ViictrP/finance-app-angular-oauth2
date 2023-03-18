@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {Route, RouterModule} from "@angular/router";
 import {AuthGuard} from "./auth/guards/auth.guard";
 import {AppComponent} from "./components/app.component";
+import {NotPermittedComponent} from "./auth/components/not-permited/not-permitted.component";
 
 const routes: Route[] = [
   {
@@ -14,10 +15,16 @@ const routes: Route[] = [
     data: {
       roles: ['user']
     },
-    children: [{
-      path: 'secure',
-      loadChildren: () => import('./secure/secure.module').then(m => m.SecureModule)
-    }]
+    children: [
+      {
+        path: 'secure',
+        loadChildren: () => import('./secure/secure.module').then(m => m.SecureModule)
+      }
+    ]
+  },
+  {
+    path: 'not-permitted',
+    component: NotPermittedComponent
   }
 ];
 
