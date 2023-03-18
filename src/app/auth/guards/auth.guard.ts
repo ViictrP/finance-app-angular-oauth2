@@ -22,7 +22,11 @@ export class AuthGuard extends KeycloakAuthGuard {
       return true;
     }
 
-    return requiredRoles.every(role => this.roles.includes(role));
+    const hasRole = requiredRoles.every(role => this.roles.includes(role));
+    if (!hasRole) {
+      await this.router.navigate(['/not-permitted']);
+    }
+    return hasRole;
   }
 
 }
