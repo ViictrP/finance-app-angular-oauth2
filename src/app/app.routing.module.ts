@@ -11,7 +11,7 @@ const routes: Route[] = [
     path: '',
     canActivate: [AuthGuard],
     data: {
-      roles: ['admin']
+      roles: ['user']
     },
     children: [
       {
