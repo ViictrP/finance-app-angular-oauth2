@@ -1,7 +1,6 @@
 import {NgModule} from "@angular/core";
 import {Route, RouterModule} from "@angular/router";
 import {AuthGuard} from "./auth/guards/auth.guard";
-import {AppComponent} from "./components/app.component";
 import {NotPermittedComponent} from "./auth/components/not-permited/not-permitted.component";
 
 const routes: Route[] = [
@@ -10,10 +9,9 @@ const routes: Route[] = [
   },
   {
     path: '',
-    component: AppComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['user']
+      roles: ['admin']
     },
     children: [
       {
