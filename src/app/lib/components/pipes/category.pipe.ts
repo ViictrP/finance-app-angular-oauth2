@@ -1,6 +1,20 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {categoryMapResponse} from '../../../dto/categoryMap.response';
-import {categoryMaIconpResponse} from '../../../dto/categoryMapIcon.response';
+
+const categoryMap: { [key: string]: string } = {
+  food: 'Restaurante',
+  'credit-card': 'Cartão',
+  home: 'Casa',
+  shop: 'Shop',
+  other: 'Outro',
+};
+
+const categoryMapIcon: { [key: string]: string } = {
+  food: 'ph-fork-knife-fill',
+  'credit-card': 'ph-credit-card-fill',
+  home: 'ph-house-line-fill',
+  shop: 'ph-shopping-bag-fill',
+  other: 'ph-cardholder-fill',
+};
 
 @Pipe({
   name: 'category'
@@ -9,9 +23,9 @@ export class CategoryPipe implements PipeTransform {
 
   transform(value: string, icon: boolean = false): string {
     if (icon) {
-      return categoryMaIconpResponse[value];
+      return categoryMapIcon[value];
     }
-    return categoryMapResponse[value];
+    return categoryMap[value];
   }
 
 }

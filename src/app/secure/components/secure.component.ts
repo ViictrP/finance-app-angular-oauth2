@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {UserService} from "../services/user.service";
 import {Observable} from "rxjs";
-import User from "../../entities/User";
+import UserDTO from "../../dto/user.dto";
 import {DARK_THEME, LIGHT_THEME, PreferencesService} from "../services/preferences.service";
 import {BaseComponent} from "./BaseComponent";
 
@@ -11,7 +11,7 @@ import {BaseComponent} from "./BaseComponent";
 })
 export class SecureComponent extends BaseComponent implements OnInit {
 
-  user$?: Observable<User>;
+  user$?: Observable<UserDTO>;
   constructor(private readonly userService: UserService,
               readonly changeDetector: ChangeDetectorRef,
               private readonly preferencesService: PreferencesService) {

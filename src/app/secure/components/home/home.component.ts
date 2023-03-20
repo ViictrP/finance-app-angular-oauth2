@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import User from '../../../entities/User';
+import UserDTO from '../../../dto/user.dto';
 import {UserService} from '../../services/user.service';
-import Transaction from '../../../entities/Transaction';
+import TransactionDTO from '../../../dto/transaction.dto';
 import {Router} from '@angular/router';
-import CreditCard from '../../../entities/CreditCard';
+import CreditCardDTO from '../../../dto/credit-card.dto';
 import {BaseComponent} from '../BaseComponent';
 import { ModalComponent } from '../../../lib/components/modal/modal.component';
 import TransactionService from '../../services/transaction.service';
@@ -17,9 +17,9 @@ import {calculateExpensesHelper} from "../../helper/calculateExpenses.helper";
 })
 export class HomeComponent extends BaseComponent implements OnInit {
   @ViewChild('deleteTransactionModal') deleteTransactionModal: ModalComponent | undefined;
-  user?: User;
-  filteredTransactions: Transaction[] = [];
-  selectedTransaction?: Transaction;
+  user?: UserDTO;
+  filteredTransactions: TransactionDTO[] = [];
+  selectedTransaction?: TransactionDTO;
   creditCardsTotal: { [key: string]: number } = {};
   expensesAmount = 0;
   recurringExpenseAmount = 0;
@@ -31,11 +31,11 @@ export class HomeComponent extends BaseComponent implements OnInit {
     super(detector);
   }
 
-  get transactions(): Transaction[] {
+  get transactions(): TransactionDTO[] {
     return this.user!.transactions;
   }
 
-  get creditCards(): CreditCard[] {
+  get creditCards(): CreditCardDTO[] {
     return this.user?.creditCards ?? [];
   }
 
@@ -80,7 +80,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
     return parseFloat(String((this.creditCardsTotal[creditCardId] / this.expensesAmount) * 100)).toFixed(2);
   }
 
-  editTransaction(transaction: Transaction) {
+  editTransaction(transaction: TransactionDTO) {
     this.selectedTransaction = transaction;
     this.deleteTransactionModal?.show();
   }

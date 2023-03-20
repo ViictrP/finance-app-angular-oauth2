@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import CreditCard from '../../entities/CreditCard';
+import CreditCardDTO from '../../dto/credit-card.dto';
 import {Observable} from 'rxjs';
 import {environment} from "../environments/environment";
 
@@ -10,13 +10,13 @@ export class CreditCardService {
   constructor(private readonly httpClient: HttpClient) {
   }
 
-  saveCreditCard(creditCard: CreditCard, shouldUpdate: boolean): Observable<CreditCard> {
+  saveCreditCard(creditCard: CreditCardDTO, shouldUpdate: boolean): Observable<CreditCardDTO> {
     const url = `${environment.serverURL}/credit-cards`;
 
     if (shouldUpdate) {
-      return this.httpClient.put<CreditCard>(url + `/${creditCard.id}`, creditCard);
+      return this.httpClient.put<CreditCardDTO>(url + `/${creditCard.id}`, creditCard);
     } else {
-      return this.httpClient.post<CreditCard>(url, creditCard);
+      return this.httpClient.post<CreditCardDTO>(url, creditCard);
     }
   }
 }

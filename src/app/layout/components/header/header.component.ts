@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import User from '../../../entities/User';
+import UserDTO from '../../../dto/user.dto';
 import {UserService} from '../../../secure/services/user.service';
 
 @Component({
@@ -11,7 +11,7 @@ import {UserService} from '../../../secure/services/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() user?: Observable<User>;
+  @Input() user?: Observable<UserDTO>;
 
   constructor(private readonly router: Router) {
   }

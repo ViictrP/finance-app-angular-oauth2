@@ -1,7 +1,7 @@
-import Invoice from './Invoice';
-import User from './User';
+import InvoiceDTO from './invoice.dto';
+import UserDTO from './user.dto';
 
-export default interface Transaction {
+export default interface TransactionDTO {
   id?: string;
   amount: number;
   description: string;
@@ -10,8 +10,8 @@ export default interface Transaction {
   installmentNumber?: number;
   createdAt?: Date;
   date: Date;
-  invoice?: Invoice;
-  user?: User;
+  invoice?: InvoiceDTO;
+  user?: UserDTO;
   category: 'food' | 'home' | 'credit-card' | 'shop' | 'other';
   recurring?: boolean;
 }

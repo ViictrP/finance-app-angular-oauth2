@@ -1,13 +1,13 @@
-import User from './User';
-import Invoice from './Invoice';
+import UserDTO from './user.dto';
+import InvoiceDTO from './invoice.dto';
 
-export default interface CreditCard {
+export default interface CreditCardDTO {
   id: string;
   title: string;
   description: string;
   number: string;
-  user?: User;
-  invoices: Invoice[];
+  user?: UserDTO;
+  invoices: InvoiceDTO[];
   invoiceClosingDay: number;
   createAt?: Date;
   backgroundColor: string;
