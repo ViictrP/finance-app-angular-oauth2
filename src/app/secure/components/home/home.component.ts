@@ -40,12 +40,12 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscribeAndRender(this.userService.currentUser, (user) => {
+    this.subscribeAndRender(this.userService.currentUser$, (user) => {
       if (!!user) {
         this.user = user;
         this.calculateExpensesAmout();
-        this.filteredTransactions = this.user?.transactions.concat(
-          this.user?.recurringExpenses
+        this.filteredTransactions = this.user.transactions.concat(
+          this.user.recurringExpenses
           .map(transaction => {
             transaction.recurring = true
             return transaction;

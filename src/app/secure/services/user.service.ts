@@ -8,9 +8,10 @@ import UserDTO from "../../dto/user.dto";
 export class UserService {
   usersEndpoint: string = '';
   private _currentUser = new BehaviorSubject<UserDTO | undefined>(undefined);
+  currentUser$ = this._currentUser.asObservable();
 
-  get currentUser() {
-    return this._currentUser.asObservable();
+  set currentUser(user: UserDTO) {
+    this._currentUser.next(user);
   }
 
   constructor(private readonly httpClient: HttpClient) {
@@ -19,6 +20,14 @@ export class UserService {
 
   public loadUserProfile(): Observable<UserDTO> {
     return this.httpClient.get<UserDTO>(`${this.usersEndpoint}/me`)
-    .pipe(tap(user => this._currentUser.next(user)));
+    .pipe(tap(profile => {
+        profile.creditCards
+        .forEach(creditCard => {
+          creditCard.totalInvoiceAmount = creditCard.invoices[0]?.transactions
+          .reduce((sum, current) =>
+            sum + Number(current.amount), 0);
+        });
+      }),
+      tap(user => this._currentUser.next(user)));
   }
 }
