@@ -11,7 +11,7 @@ import {UserService} from '../../../secure/services/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() user?: Observable<UserDTO>;
+  @Input() user$?: Observable<UserDTO>;
 
   constructor(private readonly router: Router) {
   }

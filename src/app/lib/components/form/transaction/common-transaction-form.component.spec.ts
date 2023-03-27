@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonTransactionFormComponent } from './common-transaction-form.component';
-import { FormModule } from '../../../../form.module';
 import { LoadingButtonComponent } from '../../buttons/loading-button.component';
+import {FormModule} from "../../../form.module";
 
 describe('CommonTransactionFormComponent', () => {
   let fixture: ComponentFixture<CommonTransactionFormComponent>;

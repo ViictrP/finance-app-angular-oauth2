@@ -1,18 +1,16 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {HeaderComponent} from './header.component';
-import {LoginService} from '../../../public/services/login.service';
 import {Router} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {UserService} from '../../../secure/services/user.service';
 import {of} from 'rxjs';
 import UserDTO from '../../../dto/user.dto';
-import { WebViewService } from '../../../lib/service/web-view.service';
+import {WebViewService} from '../../../lib/service/web-view.service';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let loginService: LoginService;
   let userService: UserService;
   let router: Router;
 
@@ -33,12 +31,11 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       imports: [HttpClientTestingModule],
-      providers: [LoginService, UserService, WebViewService]
+      providers: [UserService, WebViewService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
-    loginService = TestBed.inject(LoginService);
     userService = TestBed.inject(UserService);
     router = TestBed.inject(Router);
     fixture.detectChanges();
@@ -49,18 +46,9 @@ describe('HeaderComponent', () => {
   });
 
   it('Should fetch secure profile on init', () => {
-    jest.spyOn(userService, 'getProfile').mockImplementation(() => of(_user));
+    jest.spyOn(userService, 'loadUserProfile').mockImplementation(() => of(_user));
     component.ngOnInit();
 
     component.user$?.subscribe(user => expect(user).toStrictEqual(_user));
-  });
-
-  it('Should log out with success', () => {
-    const logOutSpy = jest.spyOn(loginService, 'logOut');
-    const navigateSpy = jest.spyOn(router, 'navigate').mockImplementation(jest.fn());
-    component.logOut();
-
-    expect(logOutSpy).toHaveBeenCalled();
-    expect(navigateSpy).toHaveBeenCalledWith(['/login']);
   });
 });
