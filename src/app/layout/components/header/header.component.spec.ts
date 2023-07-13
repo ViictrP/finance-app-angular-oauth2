@@ -47,7 +47,6 @@ describe('HeaderComponent', () => {
 
   it('Should fetch secure profile on init', () => {
     jest.spyOn(userService, 'loadUserProfile').mockImplementation(() => of(_user));
-    component.ngOnInit();
 
     component.user$?.subscribe(user => expect(user).toStrictEqual(_user));
   });

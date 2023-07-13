@@ -1,6 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ProfileComponent} from './profile.component';
-import {FormModule} from '../../../form.module';
 import {UserService} from '../../services/user.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {BottomSheetComponent} from '../../../lib/components/bottom-sheet/bottom-sheet.component';
@@ -10,6 +9,9 @@ import {InputComponent} from '../../../lib/components/form/input/input.component
 import {IconButtonComponent} from '../../../lib/components/buttons/icon-button.component';
 import { PreferencesService } from '../../services/preferences.service';
 import { WebViewService } from '../../../lib/service/web-view.service';
+import { FormModule } from '../../../lib/form.module';
+import { AuthService } from '../../../auth/service/auth.service';
+import { KeycloakService } from 'keycloak-angular';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -32,7 +34,9 @@ describe('ProfileComponent', () => {
       providers: [
         UserService,
         PreferencesService,
-        WebViewService
+        WebViewService,
+        AuthService,
+        KeycloakService
       ]
     });
 
