@@ -14,9 +14,15 @@ import {AuthorizationInterceptor} from "./interceptors/authorization.interceptor
 import {UserHttpInterceptor} from "./interceptors/user-http.interceptor";
 import {CreditCardsComponent} from "./components/credit-cards/credit-cards.component";
 import '@angular/common/locales/global/pt';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [SecureComponent, HomeComponent, CreditCardsComponent],
+  declarations: [
+    SecureComponent,
+    HomeComponent,
+    CreditCardsComponent,
+    ProfileComponent
+  ],
   imports: [
     SecureRoutingModule,
     HttpClientModule,

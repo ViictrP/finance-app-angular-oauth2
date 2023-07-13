@@ -3,6 +3,7 @@ import {Route, RouterModule} from "@angular/router";
 import {SecureComponent} from "./components/secure.component";
 import {HomeComponent} from "./components/home/home.component";
 import {CreditCardsComponent} from "./components/credit-cards/credit-cards.component";
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Route[] = [
   {
@@ -19,6 +20,10 @@ const routes: Route[] = [
       {
         path: 'credit-cards',
         component: CreditCardsComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
       }
     ]
   }

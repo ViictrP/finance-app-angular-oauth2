@@ -1,5 +1,6 @@
 import TransactionDTO from './transaction.dto';
 import CreditCardDTO from './credit-card.dto';
+import { SalaryDTO } from './salaryDTO';
 
 export default interface UserDTO {
   id: string;
@@ -9,7 +10,7 @@ export default interface UserDTO {
   password: string;
   active: boolean;
   createdAt: Date;
-  salary?: number;
+  salary?: SalaryDTO;
   creditCards: CreditCardDTO[];
   transactions: TransactionDTO[];
   recurringExpenses: TransactionDTO[]

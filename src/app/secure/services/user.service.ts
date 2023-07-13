@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {environment} from "../environments/environment";
 import UserDTO from "../../dto/user.dto";
+import { SalaryDTO } from '../../dto/salaryDTO';
 
 @Injectable()
 export class UserService {
@@ -29,5 +30,9 @@ export class UserService {
         });
       }),
       tap(user => this._currentUser.next(user)));
+  }
+
+  public updateProfile(user: SalaryDTO): Observable<SalaryDTO> {
+    return this.httpClient.post<SalaryDTO>(`${this.usersEndpoint}/salaries`, user);
   }
 }

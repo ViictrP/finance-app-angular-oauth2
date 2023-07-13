@@ -32,6 +32,9 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.4",
+    "@angular-eslint/eslint-plugin": "^16.1.0",
+    "@angular-eslint/eslint-plugin-template": "^16.1.0",
+    "@angular-eslint/template-parser": "^16.1.0",
     "@angular/cli": "~15.2.4",
     "@angular/compiler-cli": "^15.2.0",
     "@tailwindcss/forms": "^0.5.3",
