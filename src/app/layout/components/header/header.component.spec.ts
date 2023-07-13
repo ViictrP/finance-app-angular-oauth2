@@ -7,6 +7,8 @@ import {UserService} from '../../../secure/services/user.service';
 import {of} from 'rxjs';
 import UserDTO from '../../../dto/user.dto';
 import {WebViewService} from '../../../lib/service/web-view.service';
+import { AuthService } from '../../../auth/service/auth.service';
+import { KeycloakService } from 'keycloak-angular';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -31,7 +33,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       imports: [HttpClientTestingModule],
-      providers: [UserService, WebViewService]
+      providers: [UserService, WebViewService, AuthService, KeycloakService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
